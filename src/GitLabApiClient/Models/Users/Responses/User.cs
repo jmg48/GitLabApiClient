@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -30,7 +31,7 @@ namespace GitLabApiClient.Models.Users.Responses
         public int ColorSchemeId { get; set; }
 
         [JsonProperty("created_at")]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [JsonProperty("identities")]
         public List<Identity> Identities { get; } = new List<Identity>();

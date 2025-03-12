@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GitLabApiClient.Models.Projects.Requests;
 using Newtonsoft.Json;
@@ -7,7 +8,7 @@ namespace GitLabApiClient.Models.Projects.Responses
     public sealed class Project
     {
         [JsonProperty("last_activity_at")]
-        public string LastActivityAt { get; set; }
+        public DateTime LastActivityAt { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
