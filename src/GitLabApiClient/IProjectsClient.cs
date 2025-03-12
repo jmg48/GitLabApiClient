@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GitLabApiClient.Internal.Paths;
+using GitLabApiClient.Models;
 using GitLabApiClient.Models.Job.Requests;
 using GitLabApiClient.Models.Job.Responses;
 using GitLabApiClient.Models.Milestones.Requests;
@@ -9,7 +10,6 @@ using GitLabApiClient.Models.Milestones.Responses;
 using GitLabApiClient.Models.Projects.Requests;
 using GitLabApiClient.Models.Projects.Responses;
 using GitLabApiClient.Models.Runners.Responses;
-using GitLabApiClient.Models.Users.Responses;
 using GitLabApiClient.Models.Variables.Request;
 using GitLabApiClient.Models.Variables.Response;
 
@@ -31,10 +31,34 @@ namespace GitLabApiClient
         Task<IList<Project>> GetAsync(Action<ProjectQueryOptions> options = null);
 
         /// <summary>
-        /// Get the users list of a project.
+        /// Get the members list of a project.
         /// </summary>
         /// <param name="projectId">The ID, path or <see cref="Project"/> of the project.</param>
-        Task<IList<User>> GetUsersAsync(ProjectId projectId);
+        Task<IList<Member>> GetMembersAsync(ProjectId projectId);
+
+        /// <summary>
+        /// Adds a user to a group.
+        /// </summary>
+        /// <param name="groupId">The ID, path or <see cref="Group"/> of the group.</param>
+        /// <param name="request">Add group member request.</param>
+        /// <returns>Newly created membership.</returns>
+        Task<Member> AddMemberAsync(ProjectId groupId, AddProjectMemberRequest request);
+
+        /// <summary>
+        /// Updates a user's group membership.
+        /// </summary>
+        /// <param name="groupId">The ID, path or <see cref="Group"/> of the group.</param>
+        /// <param name="userId">The user ID of the member.</param>
+        /// <param name="request">Update group member request.</param>
+        /// <returns>Updated membership.</returns>
+        Task<Member> UpdateMemberAsync(ProjectId groupId, int userId, AddProjectMemberRequest request);
+
+        /// <summary>
+        /// Removes a user as a member of the group.
+        /// </summary>
+        /// <param name="groupId">The ID, path or <see cref="Group"/> of the group.</param>
+        /// <param name="userId">The user ID of the member.</param>
+        Task RemoveMemberAsync(ProjectId groupId, int userId);
 
         /// <summary>
         /// Retrieves project variables by its id.

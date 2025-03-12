@@ -6,6 +6,8 @@ using GitLabApiClient.Internal.Http;
 using GitLabApiClient.Internal.Paths;
 using GitLabApiClient.Internal.Queries;
 using GitLabApiClient.Internal.Utilities;
+using GitLabApiClient.Models;
+using GitLabApiClient.Models.Groups.Requests;
 using GitLabApiClient.Models.Job.Requests;
 using GitLabApiClient.Models.Job.Responses;
 using GitLabApiClient.Models.Milestones.Requests;
@@ -14,7 +16,6 @@ using GitLabApiClient.Models.Projects.Requests;
 using GitLabApiClient.Models.Projects.Responses;
 using GitLabApiClient.Models.Runners.Responses;
 using GitLabApiClient.Models.Uploads.Requests;
-using GitLabApiClient.Models.Users.Responses;
 using GitLabApiClient.Models.Variables.Request;
 using GitLabApiClient.Models.Variables.Response;
 
@@ -65,8 +66,8 @@ namespace GitLabApiClient
         /// Get the users list of a project.
         /// </summary>
         /// <param name="projectId">The ID, path or <see cref="Project"/> of the project.</param>
-        public async Task<IList<User>> GetUsersAsync(ProjectId projectId) =>
-            await _httpFacade.GetPagedList<User>($"projects/{projectId}/users");
+        public async Task<IList<Member>> GetMembersAsync(ProjectId projectId) =>
+            await _httpFacade.GetPagedList<Member>($"projects/{projectId}/members");
 
         /// <summary>
         /// Retrieves project variables by its id.
@@ -135,6 +136,39 @@ namespace GitLabApiClient
             Guard.NotNull(request, nameof(request));
             return await _httpFacade.Post<Project>("projects", request);
         }
+
+        /// <summary>
+        /// Adds a user to a group.
+        /// </summary>
+        /// <param name="projectId">The ID, path or <see cref="Project"/> of the group.</param>
+        /// <param name="request">Add group member request.</param>
+        /// <returns>Newly created membership.</returns>
+        public async Task<Member> AddMemberAsync(ProjectId projectId, AddProjectMemberRequest request)
+        {
+            Guard.NotNull(request, nameof(request));
+            return await _httpFacade.Post<Member>($"projects/{projectId}/members", request);
+        }
+
+        /// <summary>
+        /// Updates a user's group membership.
+        /// </summary>
+        /// <param name="projectId">The ID, path or <see cref="Project"/> of the group.</param>
+        /// <param name="userId">The user ID of the member.</param>
+        /// <param name="request">Update group member request.</param>
+        /// <returns>Updated membership.</returns>
+        public async Task<Member> UpdateMemberAsync(ProjectId projectId, int userId, AddProjectMemberRequest request)
+        {
+            Guard.NotNull(request, nameof(request));
+            return await _httpFacade.Put<Member>($"projects/{projectId}/members/{userId}", request);
+        }
+
+        /// <summary>
+        /// Removes a user as a member of the group.
+        /// </summary>
+        /// <param name="projectId">The ID, path or <see cref="Project"/> of the group.</param>
+        /// <param name="userId">The user ID of the member.</param>
+        public async Task RemoveMemberAsync(ProjectId projectId, int userId) =>
+            await _httpFacade.Delete($"projects/{projectId}/members/{userId}");
 
         /// <summary>
         /// Creates new project label.
