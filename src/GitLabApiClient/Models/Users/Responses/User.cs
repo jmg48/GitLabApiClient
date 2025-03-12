@@ -86,5 +86,8 @@ namespace GitLabApiClient.Models.Users.Responses
 
         [JsonProperty("website_url")]
         public string WebsiteUrl { get; set; }
+
+        [JsonProperty("bot")]
+        public bool Bot { get; set; }
     }
 }
