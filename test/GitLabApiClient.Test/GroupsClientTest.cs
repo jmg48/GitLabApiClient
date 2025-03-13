@@ -250,7 +250,7 @@ namespace GitLabApiClient.Test
         public async Task CreatedGroupCanHaveMemberAdded()
         {
             //act
-            var member = await _sut.AddMemberAsync(TestGroupTextId, new AddGroupMemberRequest(AccessLevel.Developer, TestExtraUserId));
+            var member = await _sut.AddMemberAsync(TestGroupTextId, new AddGroupMemberRequest((int)AccessLevel.Developer, TestExtraUserId));
 
             //assert
             member.Should().NotBeNull();

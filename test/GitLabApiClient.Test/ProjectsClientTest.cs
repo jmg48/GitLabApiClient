@@ -39,9 +39,9 @@ namespace GitLabApiClient.Test
         }
 
         [Fact]
-        public async Task ProjectUsersRetrieved()
+        public async Task ProjectMembersRetrieved()
         {
-            var users = await _sut.GetUsersAsync(GitLabApiHelper.TestProjectId);
+            var users = await _sut.GetMembersAsync(GitLabApiHelper.TestProjectId);
             users.Should().NotBeEmpty();
         }
 

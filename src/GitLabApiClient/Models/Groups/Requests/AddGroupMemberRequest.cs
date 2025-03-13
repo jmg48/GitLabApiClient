@@ -12,5 +12,5 @@ namespace GitLabApiClient.Models.Groups.Requests
     public sealed record AddGroupMemberRequest(
         [property:JsonProperty("access_level")] int AccessLevel,
         [property:JsonProperty("user_id")] int UserId,
-        [property:JsonProperty("expires_at")] DateTime ExpiresAt);
+        [property:JsonProperty("expires_at")] DateTime ExpiresAt = default);
 }
