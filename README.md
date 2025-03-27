@@ -1,13 +1,27 @@
-# GitLabApiClient
+# GitLab.RestApiClient
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nmklotas/GitLabApiClient/DotNet/master?logo=github)](https://github.com/nmklotas/GitLabApiClient/actions?query=workflow%3A%22DotNet%22+branch%3Amaster)
-[![NuGet](https://img.shields.io/nuget/v/GitLabApiClient.svg)](https://nuget.org/packages/GitLabApiClient)
+Forked from [GitLabApiClient](https://www.nuget.org/packages/GitLabApiClient), which has not been updated since 2021, in order to add some newer missing features.
 
-GitLabApiClient is a .NET rest client for [GitLab API v4](https://docs.gitlab.com/ce/api/README.html).
+## Release Notes (since fork, most recent first)
+
+### Version 2.0.1
+
+- User date fields changed from string to DateTime
+- Add CRUD methods for Project members
+- Remove `Project.GetUsers()`, which isn't an API endpoint
+- Use `DateTime` for `AddGroupMemberRequest.ExpiredAt`
+- Add missing property `bool User.Bot`
+- Use `DateTime` rather than `string` for `Project.LastActivityAt` and `User.Created_At`
+- Update target framework to .NET 8
+- Update Newtonsoft.Json 12.0.3 to 13.0.3 (critical security issue)
+
+# Original Readme Content Below
+
+_This should be useful but may be out of date as I add new features_
 
 ## Main features
 
-- Targets .NET Standard 2.0
+- Targets .NET 8
 - Fully async
 - Thread safe.
 - Multi core paging.
