@@ -25,8 +25,7 @@ namespace GitLabApiClient
         /// <summary>
         /// Retrieves registered users.
         /// </summary>
-        public async Task<IList<User>> GetAsync() =>
-            await _httpFacade.GetPagedList<User>("users");
+        public async Task<IList<User>> GetAsync() => await _httpFacade.GetPagedList<User>("users");
 
         /// <summary>
         /// Retrieves an user matched by name.
@@ -55,8 +54,7 @@ namespace GitLabApiClient
         /// </summary>
         /// <param name="request">Request to create user.</param>
         /// <returns>Newly created user.</returns>
-        public async Task<User> CreateAsync(CreateUserRequest request) =>
-            await _httpFacade.Post<User>("users", request);
+        public async Task<User> CreateAsync(CreateUserRequest request) => await _httpFacade.Post<User>("users", request);
 
         /// <summary>
         /// Updates existing user
@@ -64,21 +62,18 @@ namespace GitLabApiClient
         /// <param name="userId">Id of the user.</param>
         /// <param name="request">Request to update user.</param>
         /// <returns>Newly modified user.</returns>
-        public async Task<User> UpdateAsync(UserId userId, UpdateUserRequest request) =>
-            await _httpFacade.Put<User>($"users/{userId}", request);
+        public async Task<User> UpdateAsync(UserId userId, UpdateUserRequest request) => await _httpFacade.Put<User>($"users/{userId}", request);
 
         /// <summary>
         /// Retrieves current, authenticated user session.
         /// </summary>
         /// <returns>Session of authenticated user.</returns>
-        public async Task<Session> GetCurrentSessionAsync() =>
-            await _httpFacade.Get<Session>("user");
+        public async Task<Session> GetCurrentSessionAsync() => await _httpFacade.Get<Session>("user");
 
         /// <summary>
         /// Deletes user.
         /// </summary>
         /// <param name="userId">Id of the user.</param>
-        public async Task DeleteAsync(UserId userId) =>
-            await _httpFacade.Delete($"users/{userId}");
+        public async Task DeleteAsync(UserId userId) => await _httpFacade.Delete($"users/{userId}");
     }
 }
