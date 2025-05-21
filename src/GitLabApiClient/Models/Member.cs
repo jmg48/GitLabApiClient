@@ -3,33 +3,17 @@ using Newtonsoft.Json;
 
 namespace GitLabApiClient.Models
 {
-    public sealed class Member
-    {
-        [JsonProperty("id")]
-        public int Id { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("avatar_url")]
-        public string AvatarUrl { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
-
-        [JsonProperty("username")]
-        public string Username { get; set; }
-
-        [JsonProperty("web_url")]
-        public string WebUrl { get; set; }
-
-        [JsonProperty("access_level")]
-        public int AccessLevel { get; set; }
-
-        [JsonProperty("expires_at")]
-        public DateTime ExpiresAt { get; set; }
-    }
+    /// <summary>
+    /// https://docs.gitlab.com/api/members/
+    /// </summary>
+    public sealed record Member(
+        [property: JsonProperty("id")] int Id,
+        [property: JsonProperty("username")] string Username,
+        [property: JsonProperty("name")] string Name,
+        [property: JsonProperty("state")] string State,
+        [property: JsonProperty("avatar_url")] string AvatarUrl,
+        [property: JsonProperty("web_url")] string WebUrl,
+        [property: JsonProperty("created_at")] DateTime CreatedAt,
+        [property: JsonProperty("expires_at")] DateTime? ExpiresAt,
+        [property: JsonProperty("access_level")] int AccessLevel);
 }

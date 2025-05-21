@@ -13,6 +13,7 @@ using GitLabApiClient.Models.Milestones.Requests;
 using GitLabApiClient.Models.Milestones.Responses;
 using GitLabApiClient.Models.Projects.Responses;
 using GitLabApiClient.Models.Runners.Responses;
+using GitLabApiClient.Models.Variables.Response;
 
 namespace GitLabApiClient
 {

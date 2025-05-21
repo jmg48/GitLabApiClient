@@ -15,9 +15,9 @@
     <IncludeSymbols>true</IncludeSymbols>
     <UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Version>2.0.1</Version>
+    <Version>2.1.0-alpha.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>User date fields changed from string to DateTime</PackageReleaseNotes>
+    <PackageReleaseNotes>Add Project.GetAllMembers()</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

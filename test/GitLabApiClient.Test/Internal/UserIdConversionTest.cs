@@ -24,7 +24,7 @@ namespace GitLabApiClient.Test.Internal
         public void UserId_User_Id_Conversion()
         {
             string expected = "users/5";
-            UserId sut = new User { Id = 5 };
+            UserId sut = new User(default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default, default) { Id = 5 };
             string result = $"users/{sut}";
             result.Should().Be(expected);
         }
@@ -32,9 +32,11 @@ namespace GitLabApiClient.Test.Internal
         [Fact]
         public void UserId_User_Argument_Exception()
         {
+            throw new NotImplementedException("Put this back");
+
             void TestCode()
             {
-                UserId userId = new User();
+                // UserId userId = new User().Id;
             }
 
             Action act = TestCode;

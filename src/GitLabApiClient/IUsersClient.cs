@@ -53,5 +53,10 @@ namespace GitLabApiClient
         /// </summary>
         /// <param name="userId">Id of the user.</param>
         Task DeleteAsync(UserId userId);
+
+        /// <summary>
+        /// https://docs.gitlab.com/api/users/#list-projects-and-groups-that-a-user-is-a-member-of
+        /// </summary>
+        Task<IList<Membership>> GetMembershipsAsync(UserId userId, string type = null);
     }
 }

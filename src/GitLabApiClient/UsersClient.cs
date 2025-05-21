@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GitLabApiClient.Internal.Http;
 using GitLabApiClient.Internal.Paths;
 using GitLabApiClient.Internal.Utilities;
+using GitLabApiClient.Models;
 using GitLabApiClient.Models.Users.Requests;
 using GitLabApiClient.Models.Users.Responses;
 
@@ -75,5 +76,20 @@ namespace GitLabApiClient
         /// </summary>
         /// <param name="userId">Id of the user.</param>
         public async Task DeleteAsync(UserId userId) => await _httpFacade.Delete($"users/{userId}");
+
+        /// <summary>
+        /// https://docs.gitlab.com/api/users/#list-projects-and-groups-that-a-user-is-a-member-of
+        /// </summary>
+        public async Task<IList<Membership>> GetMembershipsAsync(UserId userId, string type = null)
+        {
+            string url = $"users/{userId}/memberships";
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                url += $"?type={type}";
+            }
+
+            return await _httpFacade.GetPagedList<Membership>(url);
+        }
     }
 }

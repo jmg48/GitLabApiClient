@@ -4,6 +4,10 @@ Forked from [GitLabApiClient](https://www.nuget.org/packages/GitLabApiClient), w
 
 ## Release Notes (since fork, most recent first)
 
+### Version 2.0.3
+
+- Add `Project.GetAllMembersAsync()`
+
 ### Version 2.0.1
 
 - User date fields changed from string to DateTime
