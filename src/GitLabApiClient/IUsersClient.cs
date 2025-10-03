@@ -21,6 +21,13 @@ namespace GitLabApiClient
         Task<User> GetAsync(string name);
 
         /// <summary>
+        /// Retrieves an user matched by id.
+        /// </summary>
+        /// <param id="id">Id of the user.</param>
+        /// <returns>User or NULL if it was not found.</returns>
+        Task<User> GetAsync(int id);
+
+        /// <summary>
         /// Retrieves users by filter.
         /// </summary>
         /// <param name="filter">Filter used for usernames and emails.</param>
